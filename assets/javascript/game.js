@@ -1,14 +1,17 @@
-// Game coding =======================================================================================
-// VARIABLES
+// $(document).ready(function () {
+//     alert("start");
+// });
+
 var wordList = ["discrete", "guru", "summit", "cumbersome", "relish", "frayed", "fleet", "reinforce", "eloquent", "respectively",
     "procrastination", "conundrum", "aesthetically", "recipient", "indecipherable", "dissect", "sleuthing", "labyrinth", "disparage", "tribute",
     "typography", "confrontation", "enhancement", "proactively", "radically"];
-// var selectWord = "";
+var selectWord = "";
 var selectWordArry = [];
 var tempWordArry = [];
 var winsCharArry = [];
 
-var wins = 0;
+var totalWins = 0;
+var numOfGames= 0;
 var remainingNum = 10;
 
 // Create variables that hold references to the places in the HTML where we want to display things.
@@ -16,86 +19,95 @@ var directionsText = document.getElementById("directions-text");
 var userChoiceText = document.getElementById("userchoice-text");
 var letterAlreadyText = document.getElementById("letteralready-text");
 var winsText = document.getElementById("wins-text");
+var numberOfGames = document.getElementById("numberofgames-text");
 var remainingText = document.getElementById("remaining-text");
+
 
 function funcSelectWord() {
     var gameword = wordList[Math.floor(Math.random() * wordList.length)];
     return gameword;
 }
+selectWord = funcSelectWord();
+console.log("selectWord : " + selectWord);
 
-// $(document).ready(function () {
-//     beginningGame();
-// }
+function initGame() {
+    
+    selectWordArry = [];
+    tempWordArry = [];
+    winsCharArry= [];
+    for (var i = 0; i < selectWord.length; i++) {
+        selectWordArry.push(selectWord.charAt(i));
+        console.log("Selected word array[" + i + "] is " + selectWordArry[i]);
+        tempWordArry[i] = "_";
+    }
+    console.log("selectWordArry : " + selectWordArry);
+
+    var tempWord = "";
+    tempWord = tempWordArry.join();
+    console.log("tempWord : " + tempWord);   
+    directionsText.textContent = "Type the Alphabet key you guess!" ;                             
+    userChoiceText.textContent = tempWord;
+    letterAlreadyText.textContent = "Letters Already Guessed : ";
+    winsText.textContent = "Total wins: " + totalWins;
+    numberOfGames.textContent  = "Total number of games: " + numOfGames;
+    remainingText.textContent = "remaining: " + 0;
+    numOfGames++;
+}
+
+initGame();
+
+
 document.onkeyup = function (event) {
 
     var userInput = event.key;
-    var selectWord = funcSelectWord();
+    var userGuess = userInput.toLowerCase();
+    // console.log("userGuess: " + userGuess);
 
-    if (typeof (userInput) === 'string' || userInput instanceof String) {
-        // initialization
-        var userGuess = userInput.toLowerCase();
-        if (remainingNum == 10) {
-            // directionsText.textContent = "Press any alphabet key for guessing.";
-            directionsText.textContent = selectWord;
-            userChoiceText.textContent = "";
-            winsText.textContent = "wins: " + 0;
-            remainingText.textContent = "remaining: " + 0;
+    // if correct
+    if (selectWordArry.indexOf(userGuess) != -1) {
+        winsCharArry.push(userGuess);
+        console.log("winsCharArry: " + winsCharArry);
+        letterAlreadyText.textContent = "Letters Already Guessed:" + winsCharArry;
+        remainingText.textContent = "Number of Guesses Remaining: " + remainingNum;
 
-            for (var i = 0; i < selectWord.length; i++) {
-                selectWordArry.push(selectWord.charAt(i));
-                // console.log("Selected word array[" + i + "] is " + selectWordArry[i]);
+        for (var i = 0; i < selectWordArry.length; i++) {
+            if (selectWordArry[i] === userGuess) {
+                tempWordArry[i] = userGuess;
             }
-
-            for (var i = 0; i < selectWordArry.length; i++) {
-                tempWordArry[i] = "____ ";
-            }
-            var tempWord = tempWordArry.join();
-            userChoiceText.textContent = tempWord;
         }
-        // reset
-        else if (remainingNum == 0) {
-            var selectWord = funcSelectWord();
-            directionsText.textContent = selectWord;
-            userChoiceText.textContent = "";
-            winsText.textContent = "wins: " + 0;
-            remainingText.textContent = "remaining: " + 0;
-            remainingNum = 10;
 
-            for (var i = 0; i < selectWord.length; i++) {
-                selectWordArry.push(selectWord.charAt(i));
-                // console.log("Selected word array[" + i + "] is " + selectWordArry[i]);
-            }
+        console.log("tempWordArry: " + tempWordArry);
 
-            for (var i = 0; i < selectWordArry.length; i++) {
-                tempWordArry[i] = "____ ";
-            }
-            var tempWord = tempWordArry.join();
-            userChoiceText.textContent = tempWord;
-        }
+        userChoiceText.textContent = tempWordArry;
+        //if lose
+    } else {
         remainingNum--;
-        // if win
-        if (selectWordArry.indexOf(userGuess) != -1) {
-            wins++;
-            winsCharArry.push(userGuess);
+        remainingText.textContent = "remaining: " + remainingNum;
+    }
 
-            letterAlreadyText.textContent = "winsCharArry:" + winsCharArry;
-            winsText.textContent = "wins: " + wins;
-            remainingText.textContent = "remaining: " + remainingNum;
+    // if remining > 0 then
+    if (remainingNum > 0) {
+        console.log("tempWordArry: " + tempWordArry.join('') + " selectWord: " + selectWord);
+ // if win
+        if (tempWordArry.join('') === selectWord) {
+            totalWins++;
+            alert("Congrat!!let's do it again!");
+            selectWord = funcSelectWord();   
+            initGame();        
+        }
+        //// else remainingNum --
+        else {
 
-            for (var i = 0; i < winsCharArry.length; i++) {
-                for (var j = 0; j < selectWordArry.length; j++) {
-                    if (selectWordArry[j] === winsCharArry[i]) {
-                        tempWordArry[j] = winsCharArry[i];
-                    }
-                }
-            }
-            userChoiceText.textContent = tempWordArry;
-            //if lose
-        } else {
-            remainingText.textContent = "remaining: " + remainingNum;
         }
     }
+    //else  lose and game restart
     else {
-        alert("Please ues Alphabet to guess!!");
+        alert("You didn't win, try it again!!");
+        selectWord = funcSelectWord();
+        initGame(); 
     }
+
+
+
+
 }
