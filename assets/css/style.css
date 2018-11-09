@@ -1,0 +1,32 @@
+
+  body {
+    /* background: url(assets/fridge.png) no-repeat; */
+  }
+
+#directions-text {
+  color: red;
+  border: none;
+}
+#userchoice-text {
+  color: yellow;
+  border-style: solid;
+  border = 3px;
+}
+#letteralready-text{
+  color: green;
+  border-style: solid;
+  border = 3px;
+}
+#wins-text{
+  color: blue;
+  border-style: solid;
+  border = 3px;
+}
+#remaining-text{
+  color: black;
+  border-style: solid;
+  border = 3px;
+}
+#hangmanimg {
+  float: right;
+}
