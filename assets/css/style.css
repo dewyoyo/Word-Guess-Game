@@ -13,28 +13,6 @@ body {
 }
 
 
-/* =============sticky footer styling================= */
-/* https://css-tricks.com/snippets/css/sticky-footer/ */
-
-html,
-body {
-  height: 100%;
-  margin: 0 auto -105px;
-}
-
-.wrapper {
-  height: auto !important;
-  height: 100%;
-  min-height: 100%;
-  margin: 0 auto -105px;
-}
-
-footer,
-.push {
-  height: 105px;
-}
-/* end sticky footer styling */
-
 /* =====================general =======================*/
 
 .container {
@@ -91,7 +69,7 @@ h3 {
 
 #logo {
   float: left;
-  width: 250px;
+  width: 100%;
   height: 90px;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 30px;
@@ -103,46 +81,6 @@ h3 {
   background: #4aaaa5;
 }
 
-nav {
-  float: right;
-  margin-top: 25px;
-}
-
-nav a {
-  display: inline-block;
-  padding-left: 15px;
-  margin-left: 15px;
-  line-height: 18px;
-  color: #999;
-  text-decoration: none;
-  border-left: 1px solid #efefef;
-}
-
-nav a:first-child {
-  border-left: 0 none;
-}
-
-/* footer */
-
-
-footer {
-  padding: 30px 0;
-  clear: both;
-  font-size: 12px;
-  color: #ffffff;
-  color: #cccccc;
-  text-align: center;
-  background: #666666;
-  border-top: 8px solid #4aaaa5;
-  height: 50px;
-}
-
-h3, h2 {
-  padding-bottom: 20px;
-  margin-bottom: 15px;
-  line-height: 22px;
-  border-bottom: 2px solid #eeeeee;
-}
 
 /* main */
 
@@ -161,82 +99,35 @@ h3, h2 {
   border: 1px solid #dddddd;
 }
 
-/* ==================portfolio page======================== */
-
-.work {
-  position: relative;
-  float: left;
-  width: 274px;
-  margin: 20px 0 25px;
-  overflow: auto;
+#directions-text {
+  margin: 15px;
+  font-size : 35pt;
+  color : royalblue;
+}
+#userchoice-text {
+  font-size : 20pt;
+  border-style: dotted;
+  border-bottom: 30px;
+  margin: 15px;
+}
+#letteralready-text{
+  font-size : 20pt;
+  margin: 15px;
+}
+#wins-text{
+  font-size : 20pt;
+  margin: 15px;
+}
+#remaining-text{
+  font-size : 20pt;
+  margin: 15px;
+}
+#hangmanimg {
+  float: right; 
+  margin-right : 30px;
 }
 
-.work:nth-child(even) {
-  margin-right: 40px;
-}
 
-.work img {
-  width: 100%;
-  border: 0 none;
-  opacity: 0.8;
-}
-
-.work h3 {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 0;
-  font-weight: 300;
-  line-height: 30px;
-  color: #ffffff;
-  text-align: center;
-  background: #4aaaa5;
-  border-bottom: 0;
-}
-
-.auth-image {
-  float: left;
-  width: 200px;
-  height: auto;
-  margin-top: 10px;
-  margin-right: 25px;
-}
-#audiocon{
- float: left;
-}
-/* =======================contact page===================== */
-
-label,
-input[type=text],
-input[type=email],
-textarea {
-  display: block;
-  width: 100%;
-}
-
-input[type=text],
-input[type=email],
-textarea {
-  height: 35px;
-  padding: 0 10px;
-  font-size: 14px;
-  border: 1px solid #dddddd;
-}
-
-textarea {
-  height: 200px;
-  margin-bottom: 20px;
-}
-
-input[type=submit] {
-  padding: 10px 30px;
-  font-size: 18px;
-  color: #ffffff;
-  cursor: pointer;
-  background: #4aaaa5;
-  border: 0 none;
-}
 /* ======================================================= */
 /* ==================screen resolution==================== */
 /*  ##Screen = B/w 980px  */
@@ -294,27 +185,6 @@ input[type=submit] {
   }
 
 }
-
-#directions-text {
-  font-size : 35pt;
-  text-decoration-style: double;
-}
-#userchoice-text {
-  font-size : 20pt;
-}
-#letteralready-text{
-  font-size : 20pt;
-}
-#wins-text{
-  font-size : 20pt;
-}
-#remaining-text{
-  font-size : 20pt;
-}
-#hangmanimg {
-  float: right; 
-}
-
 
 /*  ##Screen = B/w 640px  */
 @media screen and (max-width: 640px) {
@@ -468,5 +338,25 @@ input[type=submit] {
     width: 100%;
     height: auto;
   }
+  #directions-text {
+    width: 100%;
+    font-size : 30px;
+  }
+  #userchoice-text {
+    width: 70%;
+  }
+  #letteralready-text{
+    width: 70%;
+  }
+  #wins-text{
+    width: 70%;
+  }
+  #remaining-text{
+    width: 70%;
+  }
+  #hangmanimg {
+    width: 30%;
+  }
+
 }
 
