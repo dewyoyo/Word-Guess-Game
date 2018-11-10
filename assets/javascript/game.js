@@ -90,6 +90,7 @@ document.onkeyup = function (event) {
         // if win
         if (tempWordArry.join('') === selectWord) {
             totalWins++;
+            userChoiceText.textContent = selectWord;
             alert("Congrat!!let's do it again!");
             selectWord = funcSelectWord();
             initGame();
