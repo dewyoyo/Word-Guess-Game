@@ -5,31 +5,35 @@
     <meta charset="UTF-8">
     <title>Hangman</title>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Bootstrap File -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 
 </head>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <p id="directions-text">Press any alphabet key for guessing</p>
-                <img id="hangmanimg" src="assets/images/hangman_bg.jfif">
-                <p id="userchoice-text"></p>
-                <p id="letteralready-text">letteralready-text</p>               
-                <p id="remaining-text">remaining-text</p>
-                <p id="wins-text">wins-text</p>
-                <p id="numberofgames-text">remaining-text</p>
-            </div>
+
+<body>
+
+    <header id="masthead">
+        <div class="container">
+            <h1>Let's do HANGMAN!</h1>
         </div>
+    </header>
+
+    <div id="main-container" class="container">
+        <section class="main-section">
+            <p id="directions-text">Press any alphabet key for guessing</p>
+            <img id="hangmanimg" src="assets/images/hangman_bg.jfif">
+            <p id="userchoice-text"></p>
+            <p id="letteralready-text">letteralready-text</p>
+            <p id="remaining-text">remaining-text</p>
+            <p id="wins-text">wins-text</p>
+            <p id="numberofgames-text">remaining-text</p>
+        </section>
+    </div>
 
     </div> <!--   container   -->
 
-   
+
     <script src="assets/javascript/game.js"></script>
 </body>
