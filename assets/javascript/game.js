@@ -42,7 +42,7 @@ function initGame() {
     var tempWord = "";
     tempWord = tempWordArry.join('');
     console.log("tempWord : " + tempWord);
-    directionsText.textContent = "Type the Alphabet key you guess!";
+    directionsText.textContent = "Press any alphabet key for guessing";
     userChoiceText.textContent = tempWord;
     letterAlreadyText.textContent = "Letters Already Guessed : ";
     winsText.textContent = "Total wins: " + totalWins;
